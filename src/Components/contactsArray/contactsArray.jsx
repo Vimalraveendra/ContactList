@@ -1,7 +1,7 @@
 import React from "react"
 import ContactList from '../contactList/contactList'
 
-const ContactsArray = ({dataList})=>{
+const ContactsArray = React.memo(({dataList})=>{
     dataList=dataList.sort((a,b)=>a.last_name.localeCompare(b.last_name))
     return(
         <div>
@@ -21,6 +21,6 @@ const ContactsArray = ({dataList})=>{
       
         </div>
     )
-}
+})
 
 export default ContactsArray;
