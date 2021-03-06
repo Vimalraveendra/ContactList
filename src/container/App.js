@@ -7,7 +7,8 @@ import ContactsArray from "../Components/contactsArray/contactsArray"
 class App extends React.Component{
   state={
     dataList:[],
-    searchText:''
+    searchText:'',
+    selectedContacts:[]
   }
 
   async componentDidMount(){
@@ -21,6 +22,25 @@ class App extends React.Component{
     this.setState({searchText:target})
     
   }
+
+  filteredList =()=>{
+    const {searchText,dataList} = this.state;
+    return dataList.filter(contact=>{
+      return contact.first_name.toLowerCase().includes(searchText.toLowerCase())||
+      contact.last_name.toLowerCase().includes(searchText.toLowerCase())
+    })
+  }
+
+  selectIndividualContact=(id)=>{
+    let helperArray = this.state.selectedContacts
+
+    if(helperArray.includes(id)){
+      helperArray = helperArray.filter(itemId=>itemId!==id)
+    }else{
+      helperArray =[...helperArray,id]
+    }
+    this.setState({selectedContacts:helperArray})
+  }
   
   render(){
     return (
@@ -29,7 +49,9 @@ class App extends React.Component{
           <h1>Contacts</h1>
         </header>
         <SearchField searchChange={this.onSearchChange}/>
-        <ContactsArray  dataList={this.state.dataList}/>
+        <ContactsArray  dataList={this.filteredList()} selectedContacts={this.state.selectedContacts}
+        selectIndividualContact={this.selectIndividualContact}
+        />
       </div>
     );
 
