@@ -1,5 +1,6 @@
 import React from 'react';
-import "./searchField.css";
+// import "./searchField.css";
+import "./searchField.styles.scss"
 import {FaSistrix } from 'react-icons/fa';
 
 const SearchField = React.memo(({searchChange})=>{
