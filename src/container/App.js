@@ -1,5 +1,6 @@
 import React from 'react'
-import './App.css';
+// import './App.css';
+import "./App.styles .scss"
 
 import SearchField from "../Components/searchField/searchField"
 import ContactsArray from "../Components/contactsArray/contactsArray"
