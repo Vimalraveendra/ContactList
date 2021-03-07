@@ -1,5 +1,6 @@
 import React from "react";
-import "./contactList.css"
+// import "./contactList.css"
+import "./contactList.styles.scss"
 
 const ContactList = ({id,avatar,firstName,lastName,email,selectedContacts,selectIndividualContact})=>{
     return(
